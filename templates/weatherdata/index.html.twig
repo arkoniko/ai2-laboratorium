@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista danych pogodowych{% endblock %}
+
+{% block body %}
+    <h1 class="mt-4">Lista danych pogodowych</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Lokalizacja</th>
+            <th>Data</th>
+            <th>Temperatura (°C)</th>
+            <th>Prędkość wiatru (km/h)</th>
+            <th>Wilgotność (%)</th>
+            <th>Ciśnienie (hPa)</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for weatherdatum in weatherdatas %}
+            <tr>
+                <td>{{ weatherdatum.location.city }}</td>
+                <td>{{ weatherdatum.timestamp|date('Y-m-d') }}</td>
+                <td>{{ weatherdatum.temperatureCelsius }}</td>
+                <td>{{ weatherdatum.windSpeed }}</td>
+                <td>{{ weatherdatum.humidity }}</td>
+                <td>{{ weatherdatum.pressure }}</td>
+                <td>
+                    <a href="{{ path('app_weatherdata_show', {'id': weatherdatum.id}) }}" class="btn btn-info btn-sm">Pokaż</a>
+                    <a href="{{ path('app_weatherdata_edit', {'id': weatherdatum.id}) }}" class="btn btn-primary btn-sm">Edytuj</a>
+                    {{ include('weatherdata/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Brak danych pogodowych</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_weatherdata_new') }}" class="btn btn-success">Utwórz nowe</a>
+{% endblock %}

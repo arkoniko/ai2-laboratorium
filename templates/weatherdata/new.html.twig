@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nowe dane pogodowe{% endblock %}
+
+{% block body %}
+    <h1 class="mt-4">Utwórz nowe dane pogodowe</h1>
+
+    {{ include('weatherdata/_form.html.twig') }}
+
+    <a href="{{ path('app_weatherdata_index') }}" class="btn btn-secondary mt-2">Powrót do listy</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Szczegóły danych pogodowych{% endblock %}
+
+{% block body %}
+    <h1 class="mt-4">Szczegóły danych pogodowych</h1>
+
+    <table class="table">
+        <tr>
+            <th>Lokalizacja</th>
+            <td>{{ weatherdatum.location.city }}</td>
+        </tr>
+        <tr>
+            <th>Data</th>
+            <td>{{ weatherdatum.timestamp|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th>Temperatura (°C)</th>
+            <td>{{ weatherdatum.temperatureCelsius }}</td>
+        </tr>
+        <tr>
+            <th>Prędkość wiatru (km/h)</th>
+            <td>{{ weatherdatum.windSpeed }}</td>
+        </tr>
+        <tr>
+            <th>Wilgotność (%)</th>
+            <td>{{ weatherdatum.humidity }}</td>
+        </tr>
+        <tr>
+            <th>Ciśnienie (hPa)</th>
+            <td>{{ weatherdatum.pressure }}</td>
+        </tr>
+    </table>
+
+    <a href="{{ path('app_weatherdata_index') }}" class="btn btn-secondary">Powrót do listy</a>
+    <a href="{{ path('app_weatherdata_edit', {'id': weatherdatum.id}) }}" class="btn btn-primary">Edytuj</a>
+
+    {{ include('weatherdatua/_delete_form.html.twig') }}
+{% endblock %}
