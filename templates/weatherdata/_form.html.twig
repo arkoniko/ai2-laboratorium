@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+<div class="mb-3">
+    {{ form_label(form.location) }}
+    {{ form_widget(form.location, {'attr': {'class': 'form-select'}}) }}
+    {{ form_errors(form.location) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.timestamp) }}
+    {{ form_widget(form.timestamp, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.timestamp) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.temperature_celsius) }}
+    {{ form_widget(form.temperature_celsius, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.temperature_celsius) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.wind_speed) }}
+    {{ form_widget(form.wind_speed, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.wind_speed) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.humidity) }}
+    {{ form_widget(form.humidity, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.humidity) }}
+</div>
+<div class="mb-3">
+    {{ form_label(form.pressure) }}
+    {{ form_widget(form.pressure, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.pressure) }}
+</div>
+<button class="btn btn-primary">{{ button_label|default('Zapisz') }}</button>
+{{ form_end(form) }}
